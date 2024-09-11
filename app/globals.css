@@ -8,13 +8,19 @@
 }
 @font-face {
   font-family: "PixelifySans";
-  src: url("fonts/PixelifySans.woff2") format('woff');
+  src: url("fonts/PixelifySans.woff2") format("woff");
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #8962d1;
+  }
+}
+
+@keyframes l22 {
+  100% {
+    background-position: left;
   }
 }
 
@@ -30,10 +36,54 @@ body {
   }
 }
 
-button, div {
+button,
+div {
   font-family: PixelifySans !important;
 }
 
-._1rbg3ua3, ._1n3pr302 {
-  color: #8962d1 !important;
+@layer utilities {
+  .tap-highlight-transparent {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
+
+._1n3pr301 {
+  @apply border-[#4e3879] border-solid border box-border text-base m-0 align-baseline antialiased tap-highlight-transparent appearance-none bg-none cursor-pointer text-left px-5 py-2 rounded-md font-semibold flex items-center transition-opacity duration-200 bg-[#8962d1] text-white;
+  box-shadow: 0 6px 0 #4e3879;
+}
+._1n3pr301:active {
+  box-shadow: 0 1px 0 #4e3879;
+  transform: translateY(6px);
+}
+
+._1n3pr301:disabled {
+  @apply cursor-not-allowed opacity-75;
+}
+
+.load {
+  @apply rounded-md relative; /* Add relative positioning to the container */
+  overflow: hidden; /* Ensure the pseudo-element stays within the bounds */
+}
+
+.load::before {
+  content: ''; /* Required for pseudo-elements */
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      135deg,
+      #00000000 calc(50% - 1em),
+      #8962d1 0 calc(50% + 1em),
+      #00000000 0
+    )
+    right/300% 100%;
+  animation: l22 4s infinite;
+}
+
+.load :first-child {
+  color: #8962d1;
+  padding: 0 5px;
+}
+

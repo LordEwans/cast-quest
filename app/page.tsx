@@ -1,27 +1,34 @@
 "use client";
 
-// import Image from "next/image";
-import "@farcaster/auth-kit/styles.css";
-import { AuthKitProvider } from "@farcaster/auth-kit";
-import Login from "./components/signinbutton";
+import { PrivyProvider } from "@privy-io/react-auth";
 import UserProfile from "./components/userprofile";
+import Image from "next/image";
+import Link from "next/link";
+import Loading from "./components/loading";
 
-const config = {
-  rpcUrl: "https://mainnet.optimism.io",
-  domain: "example.com",
-  siweUri: "https://example.com/login",
-};
+const config = {};
 
 const Home = () => {
   return (
-    <AuthKitProvider config={config}>
+    <PrivyProvider
+      appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID!}
+      config={config}
+    >
       {
-        <Login />
+        <div className="">
+          {/*<Link href={"/"} className="max-w-14 max-h-14">
+            <Image
+              src={require("./assets/img/CastQuest.svg")}
+              width={100}
+              height={100}
+              alt="logo"
+              className="w-[720px] h-fit"
+            />
+          </Link>*/}
+          <UserProfile />
+        </div>
       }
-      {
-        <UserProfile />
-      }
-    </AuthKitProvider>
+    </PrivyProvider>
   );
 };
 
