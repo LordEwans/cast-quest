@@ -9,7 +9,7 @@ const UserProfile = () => {
   return (
     <div className="">
       {ready ? (
-        authenticated && user.farcaster ? (
+        authenticated && user!.farcaster ? (
           <p>
             <Link
               href={user!.farcaster.url || "/"}

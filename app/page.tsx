@@ -2,9 +2,9 @@
 
 import { PrivyProvider } from "@privy-io/react-auth";
 import UserProfile from "./components/userprofile";
-import Image from "next/image";
-import Link from "next/link";
-import Loading from "./components/loading";
+// import Image from "next/image";
+// import Link from "next/link";
+// import Loading from "./components/loading";
 
 const config = {};
 
