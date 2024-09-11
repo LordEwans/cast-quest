@@ -4,24 +4,36 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #8962d1;
+}
+@font-face {
+  font-family: "PixelifySans";
+  src: url("fonts/PixelifySans.woff2") format('woff');
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #8962d1;
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: PixelifySans;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+button, div {
+  font-family: PixelifySans !important;
+}
+
+._1rbg3ua3, ._1n3pr302 {
+  color: #8962d1 !important;
 }
