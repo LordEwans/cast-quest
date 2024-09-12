@@ -4,8 +4,7 @@ import Login from "./signinbutton";
 import Image from "next/image";
 import Link from "next/link";
 
-// complete and enable drop down for user profile
-const UserProfile = () => {
+const ProfileDropdown = () => {
   const { user, authenticated, logout } = usePrivy();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -27,7 +26,7 @@ const UserProfile = () => {
   }, [dropdownRef]);
 
   return (
-    <div className="relative inline-block text-left" ref={dropdownRef}>
+    <div className="relative inline-block text-left z-50" ref={dropdownRef}>
       {authenticated && user!.farcaster ? (
         <>
           <button
@@ -52,8 +51,8 @@ const UserProfile = () => {
                 aria-labelledby="options-menu"
               >
                 <Link
-                  href={user!.farcaster.url || "/"}
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#976de6] hover:text-gray-900 rounded-md _1n3pr301"
+                  href={`/fid/${user!.farcaster!.fid!}`}
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#976de6] rounded-md _1n3pr301"
                   role="menuitem"
                 >
                   <span className="flex items-center">
@@ -71,7 +70,7 @@ const UserProfile = () => {
                 </Link>
                 <button
                   onClick={logout}
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#976de6] hover:text-gray-900 w-full min-h-8 text-left rounded-md _1n3pr301"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#976de6] w-full min-h-8 text-left rounded-md _1n3pr301"
                   role="menuitem"
                 >
                   Log out
@@ -87,4 +86,4 @@ const UserProfile = () => {
   );
 };
 
-export default UserProfile;
+export default ProfileDropdown;

@@ -1,11 +1,9 @@
 "use client";
 
 import { PrivyProvider, usePrivy } from "@privy-io/react-auth";
-import Navigation from "./components/navigation";
-import Loading from "./components/loading";
-// import Image from "next/image";
-// import Link from "next/link";
-// import Loading from "./components/loading";
+import Navigation from "../../components/navigation";
+import Profile from "../../components/profileSetting";
+import Loading from "../../components/loading";
 
 const config = {};
 
@@ -19,6 +17,7 @@ const AppContent = () => {
   return (
     <>
       <Navigation />
+      <Profile />
     </>
   );
 };
