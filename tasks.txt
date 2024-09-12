@@ -4,6 +4,7 @@ Dashboard
  * Map/location-based feature
  * Socials
  * Overlapping progress graph
+ * View board (map <> progress graph)
 
 Challenges
 IRL Challenges:

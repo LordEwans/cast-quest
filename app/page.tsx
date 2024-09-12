@@ -1,7 +1,6 @@
 "use client";
 
 import { PrivyProvider } from "@privy-io/react-auth";
-import UserProfile from "./components/userprofile";
 import Navigation from "./components/navigation";
 // import Image from "next/image";
 // import Link from "next/link";
