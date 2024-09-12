@@ -2,6 +2,7 @@
 
 import { PrivyProvider } from "@privy-io/react-auth";
 import UserProfile from "./components/userprofile";
+import Navigation from "./components/navigation";
 // import Image from "next/image";
 // import Link from "next/link";
 // import Loading from "./components/loading";
@@ -25,7 +26,7 @@ const Home = () => {
               className="w-[720px] h-fit"
             />
           </Link>*/}
-          <UserProfile />
+          <Navigation />
         </div>
       }
     </PrivyProvider>

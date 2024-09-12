@@ -10,6 +10,7 @@ const Loading = () => {
           height={720}
           alt="logo"
           className="w-[480px] h-fit"
+          draggable="false"
         />
       </div>
     </div>

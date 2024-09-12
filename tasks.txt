@@ -1,0 +1,16 @@
+Dashboard
+ * Navigation
+ * Quests
+ * Map/location-based feature
+ * Socials
+ * Overlapping progress graph
+
+Challenges
+IRL Challenges:
+ * Candy Stride 🍬: Who can walk the farthest?
+ * Sweet Sprint 🏃‍♀️: Race to the meetup spot!
+Farcaster Challenges:
+ * Trend Treats 🍭: Bet on who’ll get the most likes, comments, or recasts!
+ * Early Bird Cast 🐦: Who will be the first to cast, like, or comment?
+ * Commitment Confection 🍰: Who can stay active the longest?
+ * Sugar Slacker 🍭: Who will go inactive the longest?
