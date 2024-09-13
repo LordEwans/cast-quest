@@ -48,7 +48,7 @@ div {
 }
 
 ._1n3pr301 {
-  @apply border-[#4e3879] border-solid border box-border text-base m-0 mb-[8px] align-baseline antialiased tap-highlight-transparent appearance-none bg-none cursor-pointer text-left px-5 py-2 rounded-md font-semibold flex items-center transition-opacity duration-200 bg-[#8962d1] text-white;
+  @apply border-[#4e3879] border-solid border box-border text-base m-0 mb-[8px] align-baseline antialiased tap-highlight-transparent appearance-none bg-none cursor-pointer text-left px-5 py-2 rounded-md font-semibold flex items-center transition-opacity duration-200 bg-[#8962d1] hover:bg-[#976de6] text-white;
   box-shadow: 0 6px 0 #4e3879;
 }
 ._1n3pr301:active {
@@ -60,14 +60,27 @@ div {
   @apply cursor-not-allowed opacity-75;
 }
 
+._1n3pr302 {
+  @apply border-[#374151] border-solid border box-border text-base m-0 mb-[8px] mx-2 align-baseline antialiased tap-highlight-transparent appearance-none bg-none cursor-pointer text-left px-5 py-2 rounded-md font-semibold flex items-center transition-opacity duration-200 bg-gray-400 hover:bg-[#acb4c2]  text-gray-800;
+  box-shadow: 0 6px 0 #374151;
+}
+._1n3pr302:active {
+  box-shadow: 0 1px 0 #374151;
+  transform: translateY(6px);
+}
+
+._1n3pr302:disabled {
+  @apply cursor-not-allowed opacity-75;
+}
+
 .load {
   @apply rounded-md relative; /* Add relative positioning to the container */
   overflow: hidden; /* Ensure the pseudo-element stays within the bounds */
 }
 
 .load::before {
-  content: ''; /* Required for pseudo-elements */
-  position: absolute; 
+  content: ""; /* Required for pseudo-elements */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -87,3 +100,6 @@ div {
   padding: 0 5px;
 }
 
+input, select, textarea {
+  @apply bg-[#FAF9F6] dark:bg-[#0e1111] text-[#8962d1] border-[#fff] dark:border-[#101414] dark:shadow-xl;
+}

@@ -52,7 +52,7 @@ const ProfileDropdown = () => {
               >
                 <Link
                   href={`/fid/${user!.farcaster!.fid!}`}
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#976de6] rounded-md _1n3pr301"
+                  className="block px-4 py-2 text-sm text-gray-700 rounded-md _1n3pr301"
                   role="menuitem"
                 >
                   <span className="flex items-center">
