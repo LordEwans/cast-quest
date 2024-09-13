@@ -15,3 +15,4 @@ Farcaster Challenges:
  * Early Bird Cast 🐦: Who will be the first to cast, like, or comment?
  * Commitment Confection 🍰: Who can stay active the longest?
  * Sugar Slacker 🍭: Who will go inactive the longest?
+ * Trick or Treat 🎃: Wager on which option in a poll will gain the most votes over a set period.
