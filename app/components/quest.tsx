@@ -46,7 +46,8 @@ const QuestModal = () => {
   };
 
   const handleSubmit = () => {
-    console.log({ questType, beginsAt, endsAt, amount, extraInfo });
+    const m = `let's go on a ${questType} with @castquest, starting @ ${beginsAt} and ending @ ${endsAt}. the wager ${amount} ${currency}. ${extraInfo}`;
+    window.open(`https://warpcast.com/~/compose?text=${m}`, '_blank');
     setIsOpen(false);
   };
 
@@ -168,6 +169,8 @@ const QuestModal = () => {
               </button>
               <button
                 onClick={handleSubmit}
+                rel="noopener noreferrer"
+                aria-label="Post"
                 className="_1n3pr301 py-2 px-4 rounded" // Use your existing button style
               >
                 Post

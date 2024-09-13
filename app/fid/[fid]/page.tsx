@@ -24,8 +24,11 @@ const AppContent = () => {
 
 const Home = () => {
   return (
-    <PrivyProvider appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID!} config={config}>
-      <AppContent /> 
+    <PrivyProvider
+      appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID!}
+      config={config}
+    >
+      <AppContent />
     </PrivyProvider>
   );
 };
