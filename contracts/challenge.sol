@@ -28,7 +28,7 @@ contract ERC20Wager is Ownable {
 
     event WagerProposed(uint256 gameId, address indexed player1, uint256 amount);
     event WagerAccepted(uint256 gameId, address indexed player2);
-    event WagerCancelled(uint256 gameId, address indexed cancellingPlayer);
+    event WagerCancelled(uint256 gameId, address indexed cancellingParty);
     event WagerFinished(uint256 gameId, address indexed winner);
     event WagerClaimed(uint256 gameId, address indexed winner);
 
@@ -74,6 +74,7 @@ contract ERC20Wager is Ownable {
     function acceptWager(uint256 _gameId) external {
         Game storage game = games[_gameId];
         require(game.gameState == GameState.Open, "Wager not proposed");
+        require(msg.sender != game.player1, "Player cannot accept own wager");
 
         game.player2 = msg.sender;
         game.gameState = GameState.Accepted;
@@ -86,7 +87,7 @@ contract ERC20Wager is Ownable {
     // Either player can cancel the wager on a specific game
     function cancelWager(uint256 _gameId) external {
         Game storage game = games[_gameId];
-        require(game.gameState != GameState.Open, "Wager not proposed or already accepted, finished or cancelled.");
+        require(game.gameState == GameState.Open, "Wager not proposed or already accepted, finished or cancelled.");
         require(msg.sender == game.player1, "Only proposer can cancel");
 
         game.gameState = GameState.Cancelled;
@@ -97,16 +98,27 @@ contract ERC20Wager is Ownable {
     }
 
     // Function to be called by an external oracle or mutually trusted party to determine the winner
-    function setWinner(uint256 _gameId, address _winner) external {
+    function setWinner(uint256 _gameId, address _winner) external onlyOwner {
         Game storage game = games[_gameId];
-        require(game.gameState == GameState.Accepted && games.gameState != GameState.Finished, "Wager not accepted yet");
-        require(game.gameState == GameState.Cancelled, "Wager cancelled");
+        require(game.gameState == GameState.Accepted, "Wager not accepted yet");
         require(_winner == game.player1 || _winner == game.player2, "Invalid winner address");
         
         game.winner = _winner;
         game.gameState = GameState.Finished;
 
         emit WagerFinished(_gameId, _winner);
+    }
+
+    function abandon(uint256 _gameId) external onlyOwner {
+        Game storage game = games[_gameId];
+        require(game.gameState == GameState.Accepted, "Wager not accepted yet");
+
+        game.gameState = GameState.Cancelled;
+        
+        require(wagerToken.transfer(_owner, game.wagerAmount * 1/25), "House cut transfer failed");
+        require(wagerToken.transfer(game.winner, game.wagerAmount * 49/25), "Transfer to winner failed");
+
+        emit WagerCancelled(_gameId, msg.sender);
     }
 
     //Winner claims the tokens
