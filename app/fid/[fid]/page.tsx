@@ -1,6 +1,6 @@
 "use client";
 
-import { PrivyProvider, usePrivy } from "@privy-io/react-auth";
+import { PrivyProvider, usePrivy, useWallets } from "@privy-io/react-auth";
 import Navigation from "../../components/navigation";
 import Profile from "../../components/profileSetting";
 import Loading from "../../components/loading";
@@ -10,7 +10,9 @@ const config = {};
 const AppContent = () => {
   const { ready } = usePrivy();
 
-  if (!ready) {
+  const { ready: ready2 } = useWallets();
+
+  if (!ready || !ready2) {
     return <Loading />;
   }
 

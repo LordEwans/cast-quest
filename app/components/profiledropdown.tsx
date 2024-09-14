@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { usePrivy } from "@privy-io/react-auth";
+import { useCreateWallet, usePrivy, useWallets } from "@privy-io/react-auth";
 import Login from "./signinbutton";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,6 +8,10 @@ const ProfileDropdown = () => {
   const { user, authenticated, logout } = usePrivy();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const { wallets } = useWallets();
+  const { createWallet } = useCreateWallet();
+  if (authenticated && user!.farcaster) if (!wallets[0]) createWallet();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

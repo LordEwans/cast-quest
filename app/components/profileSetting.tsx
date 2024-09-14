@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useParams } from "next/navigation";
-import { usePrivy } from "@privy-io/react-auth";
+import {
+  usePrivy,
+  useSetWalletRecovery,
+  useWallets,
+} from "@privy-io/react-auth";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -21,6 +25,9 @@ const Profile = () => {
   const [userData, setUserData] = useState<any>();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error>();
+  const { wallets } = useWallets();
+
+  const { setWalletRecovery } = useSetWalletRecovery();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -123,6 +130,7 @@ const Profile = () => {
 
       {
         <>
+        <div className="flex flex-row justify-between items-center w-full">
           <div className="flex items-center mb-6">
             <Link
               href={`https://warpcast.com/${user.username}`}
@@ -148,6 +156,15 @@ const Profile = () => {
             </div>
           </div>
 
+          <button
+            onClick={() => setWalletRecovery()}
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#976de6] h-fit min-h-8 text-left rounded-md _1n3pr301"
+            role="menuitem"
+          >
+            Lock Wallet
+          </button>
+          </div>
+
           <p className="text-lg mb-4">{user.bio || "No bio yet."}</p>
 
           <div className="border-t border-[#8962d1] pt-4">
@@ -171,10 +188,10 @@ const Profile = () => {
                   <dd
                     className="mt-1 text-sm cursor-pointer bg-[#8962d129] w-fit"
                     onClick={() =>
-                      copyToClipboard(userIn!.farcaster!.ownerAddress)
+                      copyToClipboard(wallets[0].address.toString())
                     }
                   >
-                    {userIn!.farcaster!.ownerAddress}
+                    {wallets[0].address.toString()}
                   </dd>
                 </div>
               ) : (
