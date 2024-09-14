@@ -46,7 +46,7 @@ const QuestModal = () => {
   };
 
   const handleSubmit = () => {
-    const m = `let's go on a ${questType} with @castquest, starting @ ${beginsAt} and ending @ ${endsAt}. the wager ${amount} ${currency}. ${extraInfo}`;
+    const m = `let's go on a ${questType} with @castquest, starting @ ${beginsAt} and ending @ ${endsAt}. the wager? ${amount} ${currency}. ${extraInfo}`;
     window.open(`https://warpcast.com/~/compose?text=${m}`, '_blank');
     setIsOpen(false);
   };
@@ -135,6 +135,7 @@ const QuestModal = () => {
                 value={amount}
                 onChange={handleAmountChange}
                 className="shadow border rounded w-[calc(100%-108px)] py-2 px-3 mr-2  leading-tight focus:outline-none focus:shadow-outline"
+                min={0}
               />
               <select
                 id="currency"
@@ -157,6 +158,7 @@ const QuestModal = () => {
                 value={extraInfo}
                 onChange={handleExtraInfoChange}
                 className="shadow border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline resize-none"
+                maxLength={700}
               />
             </div>
 
