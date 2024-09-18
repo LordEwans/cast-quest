@@ -130,39 +130,42 @@ const Profile = () => {
 
       {
         <>
-        <div className="flex flex-row justify-between items-center w-full">
-          <div className="flex items-center mb-6">
-            <Link
-              href={`https://warpcast.com/${user.username}`}
-              className="mr-6"
-              target="_blank"
-            >
-              <Image
-                src={user.pfp || "/default-pfp.png"}
-                width={480}
-                height={480}
-                alt="pfp"
-                style={{ objectFit: "cover" }}
-                className="w-32 h-32 rounded-full border border-[#8962d1]"
-                draggable="false"
-              />
-            </Link>
+          <div className="flex flex-col md:flex-row justify-between items-center w-full">
+            <div className="flex items-center justify-start w-full mb-6">
+              <Link
+                href={`https://warpcast.com/${user.username}`}
+                className="mr-6"
+                target="_blank"
+              >
+                <Image
+                  src={user.pfp || "/default-pfp.png"}
+                  width={480}
+                  height={480}
+                  alt="pfp"
+                  style={{ objectFit: "cover" }}
+                  className="w-32 h-32 rounded-full border border-[#8962d1]"
+                  draggable="false"
+                />
+              </Link>
 
-            <div>
-              <h2 className="text-2xl font-bold">
-                {user.displayName || user.username}
-              </h2>
-              <p className="text-[#976de6]">@{user.username}</p>
+              <div>
+                <h2 className="text-2xl font-bold">
+                  {user.displayName || user.username}
+                </h2>
+                <p className="text-[#976de6]">@{user.username}</p>
+              </div>
             </div>
-          </div>
-
-          <button
-            onClick={() => setWalletRecovery()}
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#976de6] h-fit min-h-8 text-left rounded-md _1n3pr301"
-            role="menuitem"
-          >
-            Lock Wallet
-          </button>
+            {user.fid == userIn?.farcaster?.fid ? (
+              <button
+                onClick={() => setWalletRecovery()}
+                className="flex items-center justify-center px-4 py-2 text-sm min-w-full md:min-w-fit text-gray-700 hover:bg-[#976de6] h-fit min-h-8 text-center rounded-md _1n3pr301"
+                role="menuitem"
+              >
+                Lock Wallet
+              </button>
+            ) : (
+              <></>
+            )}
           </div>
 
           <p className="text-lg mb-4">{user.bio || "No bio yet."}</p>
@@ -180,7 +183,7 @@ const Profile = () => {
                   {user.fid || fid}
                 </dd>
               </div>
-              {user.fid == userIn?.farcaster?.fid ? (
+              {user.fid == userIn?.farcaster?.fid && wallets[0] ? (
                 <div className="sm:col-span-1">
                   <dt className="text-sm font-medium text-[#976de6]">
                     Address

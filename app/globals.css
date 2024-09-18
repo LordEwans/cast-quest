@@ -48,7 +48,7 @@ div {
 }
 
 ._1n3pr301 {
-  @apply border-[#4e3879] border-solid border box-border text-base mb-[8px] align-baseline antialiased tap-highlight-transparent appearance-none bg-none cursor-pointer text-left px-5 py-2 rounded-md font-semibold flex items-center transition-opacity duration-200 bg-[#8962d1] hover:bg-[#976de6] text-white;
+  @apply border-[#4e3879] border-solid border box-border text-base mb-[8px] align-baseline antialiased tap-highlight-transparent appearance-none bg-none cursor-pointer px-5 py-2 rounded-md font-semibold flex items-center transition-opacity duration-200 bg-[#8962d1] hover:bg-[#976de6] text-white;
   box-shadow: 0 6px 0 #4e3879;
 }
 ._1n3pr301:active {
@@ -61,7 +61,7 @@ div {
 }
 
 ._1n3pr302 {
-  @apply border-[#374151] border-solid border box-border text-base m-0 mb-[8px] mx-2 align-baseline antialiased tap-highlight-transparent appearance-none bg-none cursor-pointer text-left px-5 py-2 rounded-md font-semibold flex items-center transition-opacity duration-200 bg-gray-400 hover:bg-[#acb4c2]  text-gray-800;
+  @apply border-[#374151] border-solid border box-border text-base m-0 mb-[8px] mx-2 align-baseline antialiased tap-highlight-transparent appearance-none bg-none cursor-pointer px-5 py-2 rounded-md font-semibold flex items-center transition-opacity duration-200 bg-gray-400 hover:bg-[#acb4c2]  text-gray-800;
   box-shadow: 0 6px 0 #374151;
 }
 ._1n3pr302:active {
